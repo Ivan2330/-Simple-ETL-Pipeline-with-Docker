@@ -4,7 +4,21 @@
 This project demonstrates a simple ETL (Extract, Transform, Load) pipeline using Python and PostgreSQL. The pipeline extracts data from a CSV file, applies necessary transformations, and loads the data into a PostgreSQL database. The entire application is containerized using Docker and Docker Compose for easy setup and deployment.
 
 ## Project Structure
-DATA_TASK/ ├── data/ # Data directory containing the CSV file │ └── data.csv # Auto-generated dataset ├── etl/ # Python scripts for ETL │ ├── db_operations.py # Handles database table creation and data insertion │ ├── etl_pipeline.py # Main script to run the ETL process │ └── generate_data.py # Generates a dataset using Faker ├── sql/ # SQL scripts for analysis │ └── queries.sql # Predefined SQL queries for analysis ├── .env # Environment variables (not included in repo) ├── requirements.txt # Python dependencies ├── Dockerfile # Dockerfile for building the app image ├── docker-compose.yml # Docker Compose configuration └── README.md # Project documentation
+DATA_TASK/
+├── data/                  # Data directory containing the CSV file
+│   └── data.csv           # Auto-generated dataset
+├── etl/                   # Python scripts for ETL
+│   ├── db_operations.py   # Handles database table creation and data insertion
+│   ├── etl_pipeline.py    # Main script to run the ETL process
+│   └── generate_data.py   # Generates a dataset using Faker
+├── sql/                   # SQL scripts for analysis
+│   └── queries.sql        # Predefined SQL queries for analysis
+├── .env                   # Environment variables (not included in repo)
+├── requirements.txt       # Python dependencies
+├── Dockerfile             # Dockerfile for building the app image
+├── docker-compose.yml     # Docker Compose configuration
+└── README.md              # Project documentation
+
 
 ---
 
