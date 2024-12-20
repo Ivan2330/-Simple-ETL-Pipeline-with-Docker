@@ -3,6 +3,9 @@
 ## Description
 This project demonstrates a simple ETL (Extract, Transform, Load) pipeline using Python and PostgreSQL. The pipeline extracts data from a CSV file, applies necessary transformations, and loads the data into a PostgreSQL database. The entire application is containerized using Docker and Docker Compose for easy setup and deployment.
 
+## Project Structure
+DATA_TASK/ ├── data/ # Data directory containing the CSV file │ └── data.csv # Auto-generated dataset ├── etl/ # Python scripts for ETL │ ├── db_operations.py # Handles database table creation and data insertion │ ├── etl_pipeline.py # Main script to run the ETL process │ └── generate_data.py # Generates a dataset using Faker ├── sql/ # SQL scripts for analysis │ └── queries.sql # Predefined SQL queries for analysis ├── .env # Environment variables (not included in repo) ├── requirements.txt # Python dependencies ├── Dockerfile # Dockerfile for building the app image ├── docker-compose.yml # Docker Compose configuration └── README.md # Project documentation
+
 ---
 
 ## Features
@@ -94,18 +97,16 @@ DELETE FROM users WHERE domain NOT IN ('gmail.com', 'yahoo.com', 'example.com');
 Postman Collection
 To make testing easier, a Postman collection is provided with all the endpoints defined above.
 ```
+## Testing
 
-Instructions for Using the Postman Collection
-Download the Postman collection from the link provided above.
-Import the collection into Postman:
-Open Postman and go to File > Import.
-Select the downloaded collection file and import it.
-Use the imported collection to test the API endpoints with sample data.
-Testing
-Verify the ETL process by checking the data in the users table after the pipeline runs.
-Run all SQL queries to validate database operations and transformations.
-Use docker-compose down to stop the containers after testing:
-bash
+1. Verify the ETL process by checking the data in the `users` table after the pipeline runs.
+2. Run all SQL queries to validate database operations and transformations.
+3. Use `docker-compose down` to stop the containers after testing:
+   ```bash
+   docker-compose down
+   ```
+
+
 
 docker-compose down
 Known Issues
