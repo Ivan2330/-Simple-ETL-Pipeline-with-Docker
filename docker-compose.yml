@@ -3,9 +3,9 @@ services:
     image: postgres:14
     container_name: postgres_db
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: 2111
-      POSTGRES_DB: fast_api_study
+      POSTGRES_USER: ${DB_USER}           # Use the environment variable  DB_USER
+      POSTGRES_PASSWORD: ${DB_PASSWORD}   # Use the environment variable  DB_PASSWORD
+      POSTGRES_DB: ${DB_NAME}             # Use the environment variable  DB_NAME
     ports:
       - "5432:5432"
     volumes:
@@ -17,10 +17,10 @@ services:
     container_name: etl_app
     environment:
       DB_HOST: db
-      DB_NAME: fast_api_study
-      DB_USER: postgres
-      DB_PASSWORD: 2111
-      DB_PORT: 5432
+      DB_NAME: ${DB_NAME}                # Use the environment variable  DB_NAME
+      DB_USER: ${DB_USER}                # Use the environment variable  DB_USER
+      DB_PASSWORD: ${DB_PASSWORD}        # Use the environment variable  DB_PASSWORD
+      DB_PORT: ${DB_PORT}                # Use the environment variable  DB_PORT
     depends_on:
       - db
     command: ["python", "etl/etl_pipeline.py"]
