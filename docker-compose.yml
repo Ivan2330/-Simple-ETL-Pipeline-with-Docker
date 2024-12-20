@@ -1,0 +1,29 @@
+services:
+  db:
+    image: postgres:14
+    container_name: postgres_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 2111
+      POSTGRES_DB: fast_api_study
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  app:
+    build:
+      context: .
+    container_name: etl_app
+    environment:
+      DB_HOST: db
+      DB_NAME: fast_api_study
+      DB_USER: postgres
+      DB_PASSWORD: 2111
+      DB_PORT: 5432
+    depends_on:
+      - db
+    command: ["python", "etl/etl_pipeline.py"]
+
+volumes:
+  postgres_data:
