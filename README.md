@@ -147,7 +147,7 @@ WHERE domain NOT IN ('gmail.com', 'yahoo.com', 'example.com');
    ```
 
 
-###Known Issues
+## Known Issues
 
 1. Ensure the .env file is correctly configured before running the containers.
 2.  the data.csv file is missing, rerun the ETL pipeline to regenerate it.
