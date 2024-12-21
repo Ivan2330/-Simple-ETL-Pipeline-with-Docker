@@ -58,11 +58,11 @@ DATA_TASK/
 2. **Set up environment variables**:
    - Create a `.env` file in the root directory:
       ```env
-      DB_HOST=postgres_db
-      DB_NAME=fast_api_study
-      DB_USER=postgres
-      DB_PASSWORD=2111
-      DB_PORT=5432
+      DB_HOST= add your db_host
+      DB_NAME= add your db_name
+      DB_USER= add your db_user
+      DB_PASSWORD= add your db password
+      DB_PORT=5432 or add your own
       ```
 
 3. **Build and run the Docker containers**:
