@@ -131,10 +131,14 @@ WHERE domain NOT IN ('gmail.com', 'yahoo.com', 'example.com');
 ## Testing
 
 1. Configure the .env file correctly.
-2. Use the 'docker-compose up --build' to start the containers:
-```bash
-docker-compose up --build
-'''
+2. Download the reuirements file using:
+   ```bash
+   pip install -r requirements.txt
+   ```
+3. Use the 'docker-compose up --build' to start the containers:
+   ```bash
+   docker-compose up --build
+   ```
 4. Verify the ETL process by checking the data in the `users` table after the pipeline runs.
 5. Run all SQL queries to validate database operations and transformations.
 6. Use `docker-compose down` to stop the containers after testing:
@@ -143,8 +147,9 @@ docker-compose up --build
    ```
 
 
-Known Issues
-Ensure the .env file is correctly configured before running the containers.
-If the data.csv file is missing, rerun the ETL pipeline to regenerate it.
+###Known Issues
+
+1. Ensure the .env file is correctly configured before running the containers.
+2.  the data.csv file is missing, rerun the ETL pipeline to regenerate it.
 
 
