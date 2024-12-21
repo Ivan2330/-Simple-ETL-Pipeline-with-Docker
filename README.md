@@ -82,48 +82,67 @@ DATA_TASK/
 
 ### SQL Queries
 
-1. **User signup trends**:
+1. **Count the number of users who signed up on each date**:
    ```sql
    SELECT signup_date, COUNT(*) AS user_count
    FROM users
    GROUP BY signup_date
    ORDER BY signup_date;
    ```
-Unique email domains:
-
+   
+2. **List all unique email domains**:
 ```sql
 SELECT DISTINCT domain FROM users;
 Users signed up in the last 7 days:
 ```
+
+3. **Retrieve all users who signed up within the last 7 days**:
 ```sql
 SELECT * FROM users WHERE signup_date >= CURRENT_DATE - INTERVAL '7 days';
 Most popular email domain:
 ```
+
+4. **The most popular domain**:
 ```sql
 SELECT domain, COUNT(*) AS domain_count
 FROM users
 GROUP BY domain
 ORDER BY domain_count DESC
 LIMIT 1;
-Delete records with unwanted domains:
 ```
+   **Users with the most popular domain**:
 ```sql
-DELETE FROM users WHERE domain NOT IN ('gmail.com', 'yahoo.com', 'example.com');
-Postman Collection
-To make testing easier, a Postman collection is provided with all the endpoints defined above.
+SELECT *
+FROM users
+WHERE domain = (
+    SELECT domain
+    FROM users
+    GROUP BY domain
+    ORDER BY COUNT(*) DESC
+    LIMIT 1
+);
+``` 
+
+5. **Delete records where the email domain is not from the allowed list**:
+```sql
+DELETE FROM users
+WHERE domain NOT IN ('gmail.com', 'yahoo.com', 'example.com');
 ```
 ## Testing
 
-1. Verify the ETL process by checking the data in the `users` table after the pipeline runs.
-2. Run all SQL queries to validate database operations and transformations.
-3. Use `docker-compose down` to stop the containers after testing:
+1. Configure the .env file correctly.
+2. Use the 'docker-compose up --build' to start the containers:
+```bash
+docker-compose up --build
+'''
+4. Verify the ETL process by checking the data in the `users` table after the pipeline runs.
+5. Run all SQL queries to validate database operations and transformations.
+6. Use `docker-compose down` to stop the containers after testing:
    ```bash
    docker-compose down
    ```
 
 
-
-docker-compose down
 Known Issues
 Ensure the .env file is correctly configured before running the containers.
 If the data.csv file is missing, rerun the ETL pipeline to regenerate it.
